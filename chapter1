@@ -1,0 +1,56 @@
+Book name: 'ML in Python: Essential Techniques for Predicitve Analytics'
+------------------------------------------------------------------------
+
+Two essential algorithms for making predictions: 
+------------------------------------------------
+* Algorithms covered in this book can solve classification and regression problems. 
+* Penalized regression methods perform better when there are numerous attributes and not enough examples or time to train a more complex ensemble method. Why? 
+* Penalized regression algorithms take very less time to train. RF and Boosted decision trees, and other ensemble methods take days/ weeks. 
+* Finding which factors are most important for predicting outputs - advantages of these algorithms : feature engineering/ selection. 
+
+Penalized Regression Methods:
+-----------------------------
+PRM are extensions to Ordinary Least Squares (OLS). 
+Limiation to OLS: overfitting
+
+A line has 2 degrees of freedom (slope and constant as two parameters that define the line). 
+In OLS: if we have just 2 points, then the predicted line will pass through these points. Not a good prediction when DOF = number of points. 
+
+Sometimes, getting data is costly. We might have a set of data points, whose count is <= DOF of the desired fit.
+
+Here, PRM is good. They systematically reduce DOF to match the amount of data available and complexity of underlying phenomena.
+Genetics, DOF = number of genes, 10000s
+Text classification, DOF > 10^6 
+
+Ensemble Methods: 
+-----------------
+Basic idea: Build a horde of different predictive models and then combine their outputs (averaging/ majority votes). If these individual models (base learners) perform better than random guessing, then ensemble becomes powerful (if there is sufficient number of these models). 
+
+Purpose: These have been developed because some ML algos are not stable on their own. For example, when adding in new data: like traditional neural nets and binary decision trees. This instability causes high variance in the performance of these models. Thus, to reduce variance, average many models. 
+
+Better if all individual models use same base learner. Most common base learner: binary decision trees. 
+
+A binary decision tree is constructed by training on the data. It is basically a series of if-else statements and the conditions for these statements are produced after training. 
+Values/ comparison if statements in trained binary tree are fixed after training. Process for generating the tree is deterministic. 
+
+To get slightly different models, take random samples of the training data and train on these random subsets. --> Bagging technique. 
+Ensemble method --> each of these slighty different models are used to generate a final output on averaging/ majority vote. 
+
+When to use what? 
+-----------------
+* Always good to start off with PRM, even though they might not be as complex (hence, accurate) as ensemble methods. PRM is quick in training and inference, and can give quick results. 
+* Feature engineering will take up most time. Deciding which features to use and what not, will help in understanding the problem statement also. Trial and error methods to do this. 
+A lot of experimentation. This will take time, and hence better to couple this with PRM and get a feel for which all variables are going to be useful (also ballpark achievable perfomrmance). 
+
+For a PRM, trained model is a list of real number (coefficients), for each of the feature being used to make the prediction. No. of floating point ops = count of factors that affect prediction. 
+
+Sometimes, PRM can outperform ensemble methods: if number of factors are more, and model need not be too complex/ sufficient data is not available (eg: genetic data).  
+
+Models need to have fewer degrees of freedom than the number of data points to avoid overfitting. Data set must be a multiple of DOF. 
+
+Feature extraction: Deciding on list of features that we think will be helpful for prediction. 
+Feature engineering: Deciding the importance of certain feature. 
+ 
+Bagging, boosting and RF -- 3 main in this book. 
+
+

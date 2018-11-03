@@ -1,0 +1,41 @@
+** Understand the problem by understanding the data **
+
+ML data sets usually have columns as attributes and each row for a single observation/ data point. It is not always true, though. In text mining, columns represent instances and rows represent attributes. 
+
+Many ML algorithms take in numerical attributes only. They cannot handle categorical attributes. Examples: SVM, Kernel methods, KNN, PRM.
+
+We could convert categorical values to numerical too, but be careful here. 
+
+In the case of classification problems, if the categorical label takes on only 2 values: binary classification, else multiclass classification problem. 
+
+When starting off with the data, apart from usual observations (attributes, observations, etc), find out which are the categorical attributes and find the number of unique values assigned to them. Also, it is good to do a summary statistic of attributes and label.
+
+The labels (y-axis) can be categorical (classification) or numeric (regression). 
+
+A regression problem can be transformed to a classification problem (eg: >200$ - class 1 and <200$ - class 2). After doing regression to a problem, you can also use classification to check your methods. 
+
+Find out the number of missing values. You can discard rows with missing values if they do not drastically affect the ratio (according to the labels). If data is costly to come by and we already have few samples only, you should devise methods to fill missing fields ('imputation'). Easy method to fill in data is to compute average. If not, there is a predictive method: treat the attribute/ column with the missing values as a label and do prediciton for those rows.
+
+---------------------------------------------------------------------------
+
+PLR always has more training time than ensemble methods. Basic dataset analysis with the row and column counts can give an idea about training time with these methods. 
+
+If in a dataset, number of factors/ columns are more than number of data points - PLR will fare better (think of it as the PLR is more efficient as it has coefficients directly for each factor and thus has more control?)
+
+Generally, categorical variables are represented in strings. But, they could also be 0/1. 
+
+----------------------------------------------------------------------------
+
+Most binary tree algorithms have a cutoff on how many categories (for each attribute) they can handle. 
+Sex can be M/F --> 2 categories for this attribute. 
+US states --> 50 categories for this attribute. 
+
+If categories are more than what the RF/ BT algo can handle, we might need to 'aggregate' them. 
+
+Stratified sampling: When a category is repeated only a very small number of times (i.e. for an attribute like the States of the US, Idaho only appears twice), then while randomly choosing data for training, we might not get a good representation of the Idaho category. Here, we might have to pad this with the training data. Always keep an eye out for stuff like these. 
+
+-----------------------------------------------------------------------------
+EDA of rocksVMines (binary classification), abalone (regression with some categorical columns), wine_tasting (proper regression), glass datasets (multi-class classification) have been done. 
+These give ideas on which algorithm to pick (PLM/ ensemble) to get the required results. 
+
+- Learn the shape, size of dataset. Explore relations between the attributes. Normalizing the data (preprocessing). Simple descriptive statistics (meean, variance, quantiles) and 2nd order statistics (corr between attributes and corr between attributes and targets). Corr between aatributes and binary/ multi-class labels require more techniques. Q-Q plots - boxplot also done. SO was heat maps. 
