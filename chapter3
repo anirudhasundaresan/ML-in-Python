@@ -1,4 +1,54 @@
 * Predictive Model Building: Balancing Performance, Complexity, and Big Data*
 -----------------------------------------------------------------------------
 
+How is performance defined for different machine learning problems? This chapter presents relevant performance measures for these different problems. 
+Achieving performance goals - 3 factors: complexity of problem, complexity of model, and richness of data. 
+
+Basic problem - Function approximation: 
+---------------------------------------
+Approximate a function to predict one variable from other variables. 
+ - Variables being predicted: label, target, outcome. 
+ - Variables being used to make the predictions: predictors, regressors, features, attributes. 
+Feature engineering: Determining what attributes must be used for predictions. 
+In this book, we will come across algorithms that can assign numerical values to attributes and can thus help us do feature engineering faster. 
+
+Working with Training Data: 
+---------------------------
+Attributes such as gender, marital status - categorcial/ factor variables
+Attributes - repr by numbers - numeric/ real-valued
+Important to differentiate between these types of variables as some algos may not handle one type or the other. 
+Linear methods - usually require only numeric attributes
+PLM - converts categorical, if any, to numeric before applying algos. 
+
+Targets - can be real --> regression problem 
+Linear regression means: solving a regression problem with linear methods. 
+Targets - two-valued --> binary classification 
+        - multiple discrete values --> multi-class classification 
+
+Assessing Performance of Predictive Models: 
+-------------------------------------------
+Rregression - MSE/ MAE (since numeric)
+Classification - Misclassification error - the fraction of the examples that pred() classifies incorrectly.
+
+But, how do we get an error for a new data point, which the algorithm had not seen before? 
+
+Factors Driving Algorithm Choices and Performance - Complexity & Data: 
+----------------------------------------------------------------------
+The only performance that counts is the performance of the algo when run against new examples. 
+Complex problem - requires complex decision boundaries - ensemble methods 
+The same complex problem - if reduced to a simple problem by reducing data points - PLM might probably perform better. 
+Simple problem - with less data - PLM will perform better. 
+Complex methods are thus called for, only when complex data/ problem is under consideration. 
+Thus, a data set size may dictate that a simple model fits a complex problem better than a complex model. 
+
+ML algorithms - generate families of models and not just 1 model. Ensemble models yield more complex models than linear models, but both of these methods generate multiple models of varying complexity. 
+
+Fitting a more complicated model to a simple problem is not going to improve performance. A more complicated problem with more complicated decision boundaries gives a complicated model an opportunity to outperform a simple linear model.
+
+It is tempting to draw the conclusion that complex problems require complex models and simple problems can be solved with simple models. We also need to take the size of the dataset into consideration. With less data, a complex problem is reduced to a simple problem and hence, a simple model (PLM) might give almost similar performance as the complex model (ensemble). 
+
+Factors Driving Predicitve Algorithm Performance: 
+-------------------------------------------------
+
+
 
