@@ -108,9 +108,24 @@ for i in range(ncol of X):
     out_of_sample_error.append(least error among subsets containing i+1 columns)
 Pick subset corresponding to least overall error
 
-// Here, even after finding the minimum error fit on say, 1 column subsets, we again find all 2-column subsets of X. Ideally, to save time and computations, we would like to use the 1-col subset we found (with least error) and append a column to that to reduce the number of sets in the 2-col subsets of X. This idea: forward stepwise regression 
+// Here, even after finding the minimum error fit on say, 1 column subsets, we again find all 2-column subsets of X. 10 attributes would lead to 2^10 subsets. Ideally, to save time and computations, we would like to use the 1-col subset we found (with least error) and append a column to that to reduce the number of sets in the 2-col subsets of X. This idea: forward stepwise regression 
 
 Pseudo code: Forward stepwise regression: 
 -----------------------------------------
+Idea: Start with 1-col subsets and then, given the best single column, find the best second column to append instead of evaluating all possible 2-col subsets. 
+
+Init: out_of_sample_error = []
+Init: new_X = [] 
+Break X and Y into training and test sets 
+for number of columns in X:
+    for column not in new_X:                # we don't want repetition 
+        find OLS on (new_X+each col of X)
+    out_of_sample_error.append(least error)
+    new_X.append(run with least error)
+
+Both these methods return a paramterized family of models of varying complexities. Final model is selected based on performance on out-of-sample error. 
+Code for testing forward stepwise regression on the wine dataset in fwdStepwiseWine.py
+
+        
 
 
