@@ -123,9 +123,25 @@ for number of columns in X:
     out_of_sample_error.append(least error)
     new_X.append(run with least error)
 
-Both these methods return a paramterized family of models of varying complexities. Final model is selected based on performance on out-of-sample error. 
+Both these methods return a paramterized (number of attributes and which all attributes) family of models of varying complexities. Final model is selected based on performance on out-of-sample error. 
 Code for testing forward stepwise regression on the wine dataset in fwdStepwiseWine.py
 
-        
+Control Overfitting by Penalizing Regression Coefficients - Ridge Regression: 
+-----------------------------------------------------------------------------
+First introduction to PLMs. Another method to modify OLS regression to control model complexity and to avoid overfitting. 
+Best subset regression and forward stepwise regression throttle back ordinary regression by limiting the number of attributes used. That's equivalent to imposing the constraint that some of the attribute coefficients = 0. 
+Another approach - coefficient penalized regression; make coefficients close to 0, but not 0. One version of coefficient penalized regression: Ridge Regression. 
+The minimization equation of Ridge regression has a parameter: alpha --> When alpha is 0, it reduces to OLS. When alpha is large, betas become very small. 
+Minimization equation of RR is different from OLS in one term only: alpha*beta*beta(transpose). 
+
+Predicting wine taste with Ridge Regression - ridgeWine.py - (parameter: alpha and metric: RMSE)
+RocksVMines was classified before using OLS, fixing a threshold, and deciding. Classification of the same using RR - classifierRidgeRocksVMines.py (parameter: alpha and metric: RMSE)
+
+Summary: 
+--------
+- Visual demonstration of problem complexity and model complexity. 
+- Metrics for regression (MSE, MAE, RMSE) and classification (roc_curve, confusion matrix, auc).
+- Holdout and n-fold cross validation techniques. 
+- ML algos produce parameterized family of models - one is selected for deployment on the basis of OOS performance. 
 
 

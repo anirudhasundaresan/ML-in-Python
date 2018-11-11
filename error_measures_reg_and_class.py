@@ -135,6 +135,8 @@ print("On test data: ")
 print('tp = ', tp, '; fn = ', fn, '; fp = ', fp, '; tn = ', tn)
 print("Total number of errors: ", fp+fn)
 
+
+# Only confusion matrix requires you to use the threshold to classify data based on the predicted value. ROC curve does not need that. Here, the numerical values of yTest and yPredicted are passed on to the roc_curve function of scikit-learn.
 # generate ROC curve for this prediciton:
 # in-sample ROC:
 fpr, tpr, thresholds = roc_curve(yTrain, trainingPredictions)
