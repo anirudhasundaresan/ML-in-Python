@@ -84,3 +84,33 @@ Sometimes, in the case of rare events (fraud/ ad-clicks): random sampling can un
 After model has been trained, and once you fix on the hyper paramters, it is good to train once again on the entire dataset (training + holdout). More the training data, always the better. 
 Deployed model should thus be trained on more data before releasing it into the wild. 
 
+Achieving Harmony between Model & Data:
+---------------------------------------
+What's this about? 
+OLS can sometimes overfit a problem. Overfitting happens when the errors on the training set are significantly different than errors on the test set. To overcome overfitting, PLMs are used in the case of linear regression models. 
+Modern ML algos generate a number of models of varying complexity and then use out-of-sample performance to balance model complexity, problem complexity and data set richness to determine which model to deploy.
+OLS can sometimes overfit. It is missing an important feature of ML algorithms: there's no means to throttle it back when it overfits. So, we shall talk about forward stepwise regression and ridge regression to combat overfitting. 
+
+Choosing a Model to balance Problem complexity, Model complexity and Dataset size: 
+----------------------------------------------------------------------------------
+Y = beta(X) + beta0
+If X is invertible (X has equal number of rows and columns and all columns are linearly independent), a coefficient vector beta will fit the labels exactly. Too good to be true: overfitting. 
+Source of overfitting: having too many columns in X. So get rid of some columns: how many should you eliminate? and which amongst the columns are to be eliminated? 
+Brute force method for this: best subset selection. And better method: forward stepwise regression 
+
+Pseudo code: Best subset selection: 
+-----------------------------------
+Init: out_of_sample_error = [] 
+Break X and Y into train and test sets 
+for i in range(ncol of X): 
+    for each subset of X haveing i+1 columns: 
+        OLS fit on each subset 
+    out_of_sample_error.append(least error among subsets containing i+1 columns)
+Pick subset corresponding to least overall error
+
+// Here, even after finding the minimum error fit on say, 1 column subsets, we again find all 2-column subsets of X. Ideally, to save time and computations, we would like to use the 1-col subset we found (with least error) and append a column to that to reduce the number of sets in the 2-col subsets of X. This idea: forward stepwise regression 
+
+Pseudo code: Forward stepwise regression: 
+-----------------------------------------
+
+
