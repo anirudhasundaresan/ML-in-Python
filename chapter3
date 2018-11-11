@@ -69,4 +69,18 @@ Two areas:
 Performance measures for Different Types of Problems: 
 -----------------------------------------------------
 MSE and MAE are by default the performance measures for regression problems - they deal with real numbers. 
+Coding done in error_measures.py 
+
+Simulating Performance of Deployed Models: 
+------------------------------------------
+Train and test data splits are important. Training set must be representative of the entire dataset. And test set is not to be used for training at all. Test set size os usually 25% - 35% of data (no hard rule). Note: don't take too much data out of training set as it will deter performance. 
+N-fold cross validation (instead of a fixed holdout set): N-1 training sets and 1 test set - cycled through the entire dataset. Each set - roughly equal sizes. 
+- This method - useful to get error bounds on the error from the different error measures from different runs. 
+- Also can train more on the data and can give better generalizations. 
+- Takes more time, though. So, if your training takes a lot of time, cross-validation not to be used. Go with fixed holdout set (training only for one pass through the data).
+While sampling data for preparing training and test sets: make sure labels are distributed evenly and that no bias is introduced in training and testing sets. 
+Sometimes, in the case of rare events (fraud/ ad-clicks): random sampling can under-represent/ over-represent sepcific label. Use stratified sampling in this case. Stratified sampling divides the data into separate subsets that are separately sampled and then recombined. 
+
+After model has been trained, and once you fix on the hyper paramters, it is good to train once again on the entire dataset (training + holdout). More the training data, always the better. 
+Deployed model should thus be trained on more data before releasing it into the wild. 
 
