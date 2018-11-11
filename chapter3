@@ -14,7 +14,7 @@ In this book, we will come across algorithms that can assign numerical values to
 
 Working with Training Data: 
 ---------------------------
-Attributes such as gender, marital status - categorcial/ factor variables
+Attributes such as gender, marital status - categorical/ factor variables
 Attributes - repr by numbers - numeric/ real-valued
 Important to differentiate between these types of variables as some algos may not handle one type or the other. 
 Linear methods - usually require only numeric attributes
@@ -27,7 +27,7 @@ Targets - two-valued --> binary classification
 
 Assessing Performance of Predictive Models: 
 -------------------------------------------
-Rregression - MSE/ MAE (since numeric)
+Regression - MSE/ MAE (since numeric)
 Classification - Misclassification error - the fraction of the examples that pred() classifies incorrectly.
 
 But, how do we get an error for a new data point, which the algorithm had not seen before? 
@@ -49,6 +49,24 @@ It is tempting to draw the conclusion that complex problems require complex mode
 
 Factors Driving Predicitve Algorithm Performance: 
 -------------------------------------------------
+Thus, with a large data set, we are more entitled to using more complex models. But with size of dataset, the shape of the data also matters. Adding a column to the data increases degree of freedom and makes the model more complex. More complex model requires more data and hence, needs an increase in rows. Thus, it is like maintaining the aspect ratio of an image. 
 
+In biology (genomics) and NLP, the number of attributes >> number of data points. PLM will perform better here than ensemble methods. Dat not quite enough to train a complex model. In NLP, the vocabulary for a document - attributes. Attribute matrix, thus has usually > 1000 columns (even after preprocessing - removing oft repeated words like 'and', 'the', etc.). Also, if N-grams (N words together as a column) are considered, attribute matrix becomes very large. 
 
+Choosing an algorithm: Linear or Non-linear? 
+--------------------------------------------
+Linear: no. of columns > no. of rows and model - simple. 
+Non-linear: else; when many more rows than columns of data. 
+Choosing non-linear model entails training a number of different models of differing complexity. A model that performs the best on out-of-sample data will be chosen. These models are all generated during the training process. 
+We devise numeric performance measures for predictive models and how to estimate model performance. 
+
+Measuring the performance of Predictive Models: 
+-----------------------------------------------
+Two areas: 
+1. Different metrics for different problems: MAE/ MSE for regression; mis-classification for classification. ROC (receiver operating curves) and AUC (area under the curve). 
+2. Techniques to predict out-of-sample error estimates. 
+
+Performance measures for Different Types of Problems: 
+-----------------------------------------------------
+MSE and MAE are by default the performance measures for regression problems - they deal with real numbers. 
 
