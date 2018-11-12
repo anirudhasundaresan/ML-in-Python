@@ -1,0 +1,29 @@
+** Penalized Linear Regression ** 
+---------------------------------
+OLS will not perform great in practical cases. Better approach si to use penalized regression models. Ch3 - 2 extensions to OLS - fwd stepwise regression & ridge regression. Both reduced the amount of data available to OLS and used OOS error measurements to determine how much data resulted in best performance. 
+OLS has some inherent overfitting - PRMs tame this overfit. RR - eg of PRMs. RR regulates overfitting by penalizing sum of regression coefficients squared. 
+How does penalty method determine the nature of solution and what type of information is available about the solution? 
+
+Why PLRMs are so useful: 
+------------------------
+1. Extremely fast model training: Training time must be low; we might need to change our models based on changes in the problem statement; also feature engineering/ selection go hand-in-hand with training. Hence, we should not be spending too much time waiting for the model to train. 
+
+2. Variable importance information: Along with training, the model must also tell us the importance of each of the attributes. This makes our understanding easier. Variable importance can be achieved through PLRMs and ensemble methods as well. Important to get a feel for which variables need to be looked at more carefully. Highly ranked attributes contribute more to model's prediction than lesser-ranked attributes. 
+
+Fast training + variable importance info -- makes PLMs better for first iteration understanding of a dataset. 
+
+3. Fast evaluation when deployed: Hard to beat a linear model for evaluation speed. 1 multiply and 1 add for each attribute since it is linear model. So, fast. 
+
+Reliable performance: PLRMs will generate reasonable answers to problems of all shapes and sizes. With some coaxing, they can become powerful. Ensemble methods can sometimes be used with PLRMs to enhance prediction. 
+
+4. When attribute mx are not that tall compared to their width (or when they are sparse): generates sparse solutions. Sparse solutions means some coeff = 0, so easy to see what all variables can be discarded. Easier to see model-prediction-driving attributes. 
+
+5. Problem may require linear model: Drug testing and insurance payouts: these require linear models and hence, PLRMs are better here. 
+
+When to use Ensemble methods: 
+-----------------------------
+Only when PLRMs do not give good performance, try ensemble methods. When problem is complex and data is huge to resolve problem's complexities. Ensemble methods usually yield more information about the attributes. They can give second-order information about what pairs of attributes go well together for model's prediction than these attributes contributing alone. This info with PLRMs can help squeeze more performance out of PLRMs. 
+
+PLR: Regulating Linear Regression for Optimum Performance: 
+----------------------------------------------------------
+
