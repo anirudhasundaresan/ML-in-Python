@@ -1,6 +1,6 @@
 ** Penalized Linear Regression ** 
 ---------------------------------
-OLS will not perform great in practical cases. Better approach si to use penalized regression models. Ch3 - 2 extensions to OLS - fwd stepwise regression & ridge regression. Both reduced the amount of data available to OLS and used OOS error measurements to determine how much data resulted in best performance. 
+OLS will not perform great in practical cases. Better approach is to use penalized regression models. Ch3 - 2 extensions to OLS - fwd stepwise regression & ridge regression. Both reduced the amount of data available to OLS and used OOS error measurements to determine how much data resulted in best performance. 
 OLS has some inherent overfitting - PRMs tame this overfit. RR - eg of PRMs. RR regulates overfitting by penalizing sum of regression coefficients squared. 
 How does penalty method determine the nature of solution and what type of information is available about the solution? 
 
@@ -26,4 +26,24 @@ Only when PLRMs do not give good performance, try ensemble methods. When problem
 
 PLR: Regulating Linear Regression for Optimum Performance: 
 ----------------------------------------------------------
+- Linear methods work with numerical data only. If you have categorical data, we should encode it into numerical attributes. OLS minimizes error between the X and Y by finding approppriate betas. Finding betas by hand - difficult usually. Thus, use minimization techniques. This can find betas such that the error (average squared error) is smallest (not zero, if 0: overfits). 
+PLRM - add a penalty term (like in RR) composed of the betas to the minimization problem. For PLRM, the goal is to minimize the average squared error as well as the product of betas. Making all bets 0 can min the penalty term but will give high prediction error. OTOH, OLS ssolution minimizes the prediction error but may result in large coefficient penalty, depending on how large lambda is. 
+
+Why does this make sense: In subset selection method, there are only some attributes that get selected. For others, betas=0. Here, in PLRM, betas != 0, but can come close to it. 
+Limiting cases: if lambda=0: the problem is OLS and if lambda=+inf: penalty on bets is so severe that it forces them all to 0. Since beta0 is not included in the penalty, prediction becomes constant independent of the x's. 
+
+Other penalties - Manhattan and ElasticNet: 
+RR - uses metric of Euclidean geometry, sum of squared betas. (l2 norm) 
+Lasso/ Manhattan - sum of absolute values of betas. (l1 norm) - here, many coefficients become 0' leads to sparse answer for large to moderate values of lambda.
+ElasticNet - includes both lasso and ridge: adjustable blend of both; (alpha=1 - all lasso penalty and no ridge; usual procedure: pick alpha and iterate over lambda values). 
+
+Why Lasso penalty leads to sparse coefficient vectors? : Remember the two figures, where the unpenalized (OLS) curve and curve from the penalties are drawn in a single plane. If lambda is high, error contribution from the penalty is more and thus coefficients would be close to 0. If lambda is small, betas are not zero. The point that minimizes the sum of these two curves: will always be the tangential point between curve 1 and curve 2. 
+
+For RR, these curves will meet at a point not on either axis. But in Lasso, it so happens that for medium to large lambda, this will always be at a point on one of the axes. Thus, one beta becomes 0. Thus, this coefficient is not considered for model building. Thus, Lasso helps in feature selection. It gives a sense of order between the atributes under consideration. Thus, by varying lambda from large to small, we can list the attributes with their order of importance. 
+
+Solving the Penalized Linear Regression Problem: 
+-------------------------------------------------
+PLRM basically gets you to solve an optimization problem. Two main minimization procedures: LARS and Glmnet. Fast algos to train and are available as Python packages. 
+LARS - closely related to forward stepwise regression. 
+Glmnet - very fast and very general. 
 
