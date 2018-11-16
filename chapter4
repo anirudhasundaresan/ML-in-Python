@@ -47,3 +47,9 @@ PLRM basically gets you to solve an optimization problem. Two main minimization 
 LARS - closely related to forward stepwise regression. 
 Glmnet - very fast and very general. 
 
+Least Angle Regression & Relationship to Forward stepwise regression: 
+---------------------------------------------------------------------
+fwdstepwise - init betas=0; and at each step, find residuals after using variables already chosen; variable set with least residual - new variable unreservedly added. 
+LARS - init betas=0; and at each step, find which attribute has largest correlation with residuals. if corr > 0, increment variable's coefficient by small amount by a factor of correlation; else decrease by small amount. 
+
+LARS solutions are usually similar to Lasso (with maybe minor differences). ElasticNet solvers can be understood by looking at LARS algorithm. See larsWine2.py for LARS implementation. 
