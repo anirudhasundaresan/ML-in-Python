@@ -1,4 +1,5 @@
 ** Understand the problem by understanding the data **
+------------------------------------------------------
 
 ML data sets usually have columns as attributes and each row for a single observation/ data point. It is not always true, though. In text mining, columns represent instances and rows represent attributes. 
 

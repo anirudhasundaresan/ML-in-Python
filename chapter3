@@ -1,5 +1,5 @@
-* Predictive Model Building: Balancing Performance, Complexity, and Big Data*
------------------------------------------------------------------------------
+** Predictive Model Building: Balancing Performance, Complexity, and Big Data **
+--------------------------------------------------------------------------------
 
 How is performance defined for different machine learning problems? This chapter presents relevant performance measures for these different problems. 
 Achieving performance goals - 3 factors: complexity of problem, complexity of model, and richness of data. 

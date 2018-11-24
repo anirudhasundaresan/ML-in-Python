@@ -59,3 +59,22 @@ Using Glmnet: Very Fast and Very General:
 This algo solves the ElasticNet problem. Here, penalty function includes both Lasso (sum of absolute values) and Ridge regression (sum of squares). Here, there is a penalty term with lambda and a mix of RR and Lasso cost with alpha term. If alpha=0 --> Ridge and with alpha=1 --> Lasso. Glmnet also will give full coefficient curves like Lasso. 
 Main difference: In Lasso, the quanta of coefficients are accumulated to drive forward the curves by increasing beta values. In Glmnet, the coefficient curves are driven forward by steadily decreasing the lambda values.
 
+Do Glmnet here --> **** finish this ****  
+
+Solving Classification Problems with Penalized Regression: 
+----------------------------------------------------------
+For binary classification: put 0 for one label and 1 for another label. Thus, we have turned the classification into regression problem. Training is usually faster. (can be used in rocksVMines dataset). You could also use LARS for this. (Listing given in book, I'm not coding, since it is very similar). We will get lot more coefficient curves in the rocksVMines case since there are around 60 attributes.
+Logisitc regression could also be used in the case of classification tasks. 
+
+Working with Classification Problems Having more than 2 outcomes: 
+-----------------------------------------------------------------
+Treat them as multiple binary classification problems. Employ a one vs. all (or one vs. the rest) classification to the problem. 
+
+Understanding Basis Expansion: Using Linear Methods on Nonlinear Problems: 
+--------------------------------------------------------------------------
+Sometimes linear relationships might not be enough to explain the prediction, we shift to using polynomial versions of the factors as other factors. This is basis expansion. Done for wine taste prediction --> wine_basisexp.py 
+
+Incorporating Non-Numeric Attributes into Linear Methods: 
+---------------------------------------------------------
+Usual PLRMs work with numeric inputs/ attributes. If you have categorical attributes, one way to still use PLRM is to encode the N-category attribute into N-1 separate attributes (binary, 1 for whatever category it is, and 0 for the rest, all 0s for the Nth category). Try with abalone --> larsAbalone.py 
+This encoding scheme works not only with PLRMs but also with other linear methods (SVMs). 
