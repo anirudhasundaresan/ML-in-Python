@@ -83,7 +83,7 @@ for i in range(nSteps):
     # And because the algo is running on normalized data, there is no need for beta0. Since all the attributes are normed to 0 mean, they don't have any offset.
     # betaMat will show how for each step, beta changes.
     # print(i)
-    # print(beta)
+    print(beta)
     betaMat.append(list(beta))
     # Note that this is also another version of RR with lambda parameter; As we populate the beta vector, the sum of squares of betas also increase, this is equivalent to increasing lambda.
 
