@@ -1,11 +1,11 @@
 import numpy as np
 import random
 
-random.seed(42)
+np.random.seed(0)
 # prepare datasets
 m = 1000
 X = np.random.normal(0, 1, 2*m).reshape(m, 2)
-X = np.c_[X, np.ones(m)]
+X = np.c_[np.ones(m), X]
 # print(X.shape) # (1000, 2)
 
 y = np.random.randint(2, size=m).reshape(m, 1)
@@ -20,9 +20,11 @@ def logistic(theta, x):
     g[t<0.0] = np.exp(t[t<0.0])/(1.0 + np.exp(t[t<0.0]))
     return g
 
+thr = 0.5
 def neg_log_like(theta, x, y):
     g = logistic(theta, x)
-    return -sum(g[y>0.5]) -sum(1-g[y<0.5])
+    eps = 0.000000000001
+    return -sum(np.log(g[y>thr]+eps)) -sum(np.log(1-g[y<thr]+eps))
 
 def log_grad(theta, x, y):
     g = logistic(theta, x)
@@ -34,15 +36,13 @@ def grad_desc(theta, x, y, maxiter, alpha, tol):
     nll_vec.append(neg_log_like(theta, x, y))
     nll_del = 2.0*tol
     inds = list(range(m))
-    np.random.shuffle(inds) # this is in-place operation
-    num_mb = m # 10 mini-batches
+    num_mb = m # m mini-batches
     while (iter < maxiter) and (nll_del > tol):
-        k = 0
+        np.random.shuffle(inds) # this is in-place operation
         for i in range(m):
-            theta = theta - alpha*log_grad(theta, x[inds[k]].reshape(1,3), y[inds[k]].reshape(1,1))
-            k += 1
+            theta = theta - alpha*log_grad(theta, x[inds[i]].reshape(1,3), y[inds[i]].reshape(1,1))
             nll_vec.append(neg_log_like(theta, x, y))
-            nll_del = nll_vec[-2] - nll_vec[-1]
+            nll_del = abs(nll_vec[-2] - nll_vec[-1])
         iter += 1
     return theta, nll_vec
 
@@ -50,11 +50,12 @@ def grad_desc(theta, x, y, maxiter, alpha, tol):
 def lr_predict(theta, x):
     shape = x.shape
     xtilde = np.zeros((shape[0], shape[1]+1))
-    xtilde[:,0] = x
-    xtilde[:,1:] = np.ones(shape[0])
+    xtilde[:,1:] = x
+    xtilde[:,0] = np.ones(shape[0])
     return logistic(theta, x)
 
-alpha = 0.05
-tol = 0.001
-maxiter = 1000
-theta, cost = grad_desc(theta, X, y, alpha, tol, maxiter)
+alpha = 0.0001
+tol = 0.000001
+maxiter = 10000
+theta, cost = grad_desc(theta, X, y, maxiter, alpha, tol)
+print(theta)
