@@ -6,6 +6,7 @@ from matplotlib import pyplot as plt
 random.seed(42)
 
 # create clusterwise set of points
+'''
 data = np.array([[ 1.23571758,  1.47666206],
                  [ 0.40451215, -0.01062741],
                  [ 1.71635348,  0.83296132],
@@ -20,9 +21,18 @@ data = np.array([[ 1.23571758,  1.47666206],
                  [-1.75201349,  2.27671946]])
 
 '''
+'''
 plt.scatter(data[:, 0], data[:, 1])
 plt.show()
 '''
+
+data1 = np.random.normal(0, 1, 8).reshape(4, 2)
+data2 = np.random.normal(1, 1, 8).reshape(4, 2)
+data3 = np.random.normal(2, 1, 8).reshape(4, 2)
+
+data = np.vstack((data1, data2, data3))
+plt.scatter(data[:, 0], data[:, 1])
+plt.show()
 
 def kmeans(data, k=3):
     rows, cols = data.shape
@@ -34,7 +44,9 @@ def kmeans(data, k=3):
     while True:
         for ind, pt in enumerate(data):
             assignments[ind] = np.argmin([np.linalg.norm(pt-cent) for cent in centers])
+        print(assignments)
         for ind, cent in enumerate(centers):
+            print(centers)
             centers[ind] = sum(data[assignments==float(ind)])/len(data[assignments==float(ind)])
         if np.all(orig == assignments):
             return assignments
