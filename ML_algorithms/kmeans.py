@@ -1,3 +1,4 @@
+#  https://stats.stackexchange.com/questions/188087/proof-of-convergence-of-k-means
 import copy
 import random
 import numpy as np

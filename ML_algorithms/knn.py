@@ -30,7 +30,8 @@ def knn(k=3):
         else:
             res.append(True)
     final_res.append(res.count(False)) # checking loss
+    return final_res
 
-for i in range(1, 20):
+for i in range(1, 20, 2):
     knn(i)
-print(final_res)
+    print(i, final_res)

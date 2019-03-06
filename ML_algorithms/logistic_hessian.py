@@ -1,4 +1,5 @@
 # https://stats.stackexchange.com/questions/68391/hessian-of-logistic-function
+# https://www.quora.com/What-is-the-Hessian-matrix-What-is-it-used-for-and-for-what-reason
 
 # instead of taking the derivative wrt components, we will work directly with vectors
 

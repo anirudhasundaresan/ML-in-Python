@@ -20,8 +20,15 @@ print(indx)
 V = V[indx][:, :2]
 E = E[indx]
 
+U, sig, Vt = np.linalg.svd(X)
+print('Sigma: ', sig)
+
 print('\n', E)
-print('\n', V)
+print('\n V from cov', V)
+
+print('V from svd', Vt.T[:, :2])
 
 new_X = np.dot(X, V)
-print('\n', new_X)
+print('\n x from cov', new_X)
+
+print('x from svd', np.dot(X, Vt.T[:, :2]))
