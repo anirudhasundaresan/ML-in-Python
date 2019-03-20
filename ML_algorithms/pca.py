@@ -32,3 +32,5 @@ new_X = np.dot(X, V)
 print('\n x from cov', new_X)
 
 print('x from svd', np.dot(X, Vt.T[:, :2]))
+
+# Insight: SVD is PCA done twice; one on either type of square mx A.At or At.A

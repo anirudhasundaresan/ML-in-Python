@@ -47,7 +47,7 @@ thr = 0.5
 def neg_log_like(theta, x, y):
     g = logistic(theta, x)
     eps = 0.00000000000001
-    return -sum(np.log(g[y>thr] + eps)) -sum(np.log(1-g[y<thr]+eps))
+    return -sum(np.log(g[y>thr] + eps)) -sum(np.log(1-g[y<thr] + eps))
 
 # function to compute gradient of neg-log-likelihood
 def log_grad(theta, x, y):

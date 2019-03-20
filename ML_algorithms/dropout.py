@@ -1,4 +1,5 @@
 #  https://iamtrask.github.io/2015/07/28/dropout/
+#  Good crash course - https://www.youtube.com/watch?v=kK8-jCCR4is
 
 import numpy as np
 X = np.array([[0,1,1],[0,1,0],[1,0,1],[1,1,1]])
