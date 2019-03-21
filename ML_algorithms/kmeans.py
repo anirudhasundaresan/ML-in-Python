@@ -1,6 +1,7 @@
 #  https://stats.stackexchange.com/questions/188087/proof-of-convergence-of-k-means
 #  https://datascience.stackexchange.com/questions/985/can-i-use-unsupervised-learning-followed-by-supervised-learning?rq=1
 #  the above link regarding clustering is very important - worth 5 mins read
+#  https://nlp.stanford.edu/IR-book/html/htmledition/k-means-1.html
 
 import copy
 import random

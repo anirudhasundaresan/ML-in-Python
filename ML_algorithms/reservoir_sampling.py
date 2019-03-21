@@ -12,6 +12,8 @@
 # https://stackoverflow.com/questions/2612648/reservoir-sampling
 # http://data-analytics-tools.blogspot.com/2009/09/reservoir-sampling-algorithm-in-perl.html
 
+
+#  see prrof in my notes 
 import random
 import numpy as np
 
